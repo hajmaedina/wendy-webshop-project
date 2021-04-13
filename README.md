@@ -1,6 +1,4 @@
-# wendy-webshop-project
-
-**Wendy Hall Team project**
+# wendy-webshop-project /Wendy Hall Team project/
 
 A feladat leírása itt található: https://github.com/green-fox-academy/teaching-materials/tree/master/project/basic-web#readme
 
