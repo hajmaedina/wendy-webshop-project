@@ -1,5 +1,8 @@
 # wendy-webshop-project
-Wendy Hall Team project
+**Wendy Hall Team project**
+A feladat leírása itt található: https://github.com/green-fox-academy/teaching-materials/tree/master/project/basic-web#readme
+
+
 
 **Conflict megoldasa localban:**
 vissza kell menni a feature branchre: git checkout <branch neve>
