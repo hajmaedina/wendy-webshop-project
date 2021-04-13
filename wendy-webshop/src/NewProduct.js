@@ -3,7 +3,7 @@ import React from 'react'
 export default function NewProduct() {
     return (
         <div>
-            <h1>Új termék hozzáadása</h1>
+            <h1>Add new item</h1>
             <form >
                 <label htmlFor="name" className="form-label">Name</label>
                 <input type="text" className="form-control mb-3" id="name"/>
