@@ -1,0 +1,217 @@
+GIT INIT
+git repository inditasa sajat gepen
+
+--> csak siman bashben, terminalban a mappaban allva birom
+
+
+GIT CLONE <repo-url>
+githubon mar letezo repot szedunk le a gepre
+
+
+GIT STATUS
+a sajat gepen levo repo allapotat irja ki, mi van a stage-en
+
+
+GIT DIFF <file neve>
+ha a fileban modositottunk valamit, kiirja h mik voltak azok a modositasok
+
+
+GIT ADD .  VAGY <file neve>
+hozzaadunk file-t a stage-hez
+--> git add -a ugyanazt csinalja, mint a git add .
+
+
+GIT COMMIT -M "MESSAGE"
+a commitokat a .git mappa tarolja
+--> ha csak git commit-ot irok, akkor megnyitja a git-et
+--> ez akkor jo, ha tobb soros commitot szeretnek irni
+--> wim-be ugy tudunk irni, hogy:
+        1. i --> un. insert modban van, tudunk irni commit message-t
+        2. commit elmentese:   :wq   --> :w (write) q(kilepes) --> ha entert nyomok, elmenti es visszalep a terminalba
+        3. az insert modbol esc-el tudunk kilepni
+        4. a wim-bol visszalepni a terminalba: :q
+
+
+
+GIT PUSH 
+a remote repobo kuldjuk a fileokat/valtoztatasokat
+
+
+GIT FETCH
+leellenorzom a valtozasokat ( mi van a gepen, es mi van githubon )
+
+
+GIT PULL
+az aktualis github repo-val azonos lesz a sajat repom, letolti a valtozasokat
+
+
+Minden alkalommal kell .gitignore!!
+wim .gitignore --> igy wimmel nyitja meg a gitignore file-t 
+--> le kell nyomni az i-t --> lent megjelenik, h insert
+--> pl. beirom: .vscode --> ezt a mappat nem akarom githubra feltolteni
+--> node_modules, stb.
+--> :wq enter (mentes, kilepes)
+
+
+Azt be lehet allitani a git telepitesekor, hogy a wim vagy a nano legyen az alapertelmezett program, amit megnyit 
+pl. sima git commit eseten.
+
+nano-bol kilepes: ctrl x
+
+
+Ha mar megvan a repom a gepen, utana csinalok githubon is egy repot, akkor 
+a kettot ugy kotom ossze, hogy a terminalban a mappaban allva:
+git remote add origin <github repo url-je>
+git push -u origin master
+
+A git branch:
+Amikor letrehozunk egy repot, akkor a git letre hoz egy master branch-et. 
+Ez a fo szal, ezen vannak a commit-jaink.
+Amikor egy csapatban fejlesztunk, es letre akarunk hozni egy uj feature-t, akkor letre kell hozni neki egy feature branch-et.
+Ez azt jelenti, hogy a masterrol csinalunk egy 'leagazast', ami tudni fog a masteren levo file-okrol.
+Amikor visszatoltjuk githubra, akkor egyesiteni kell a master branchel. 
+Ha egyedul dolgozok, akkor nincs problema, mert mas nem nyul hozza a kodomhoz.
+A git merge parancs oszzemergeli a kettot, elmenti.
+Ha mergelunk, akkor a feature branchet ki kell torolni, onnantol felesleges, h ott legyen.
+Uj branchrol nem jo masok branchet letrehozni. 
+Mindig a masterrol kell!
+Amikor kesz egy feature, akkor be kell mergelni.
+
+Ha mas is dolgozik ugyanazon a branchen, akkor elofordulhat olyan, hogy o commitol egy bug javitast pl, en meg meg a javitatlan file-t akarom vissza mergelni.
+--> conflict keletkezik, fel kell oldani mielott tovabbmegy a fejlesztes
+--> ilyenkor meg kell nezni, h kinek a modositasa az, amit elfogadunk
+
+
+Barmikor, amikor elkezdek megoldani egy taskot, eloszor mindig git pull, hogy mindenkeppen up to date legyen a repom a gepemen.
+GIT BRANCH <branch neve>
+letrehozunk egy uj branchet
+--> altalban ugy tortenik a kozos fejlesztes, hogy van egy rendszer, amiben benne vannak a taskok,
+minden tasknak van egy id-ja, es ezt az id-t irjuk a git branch parancs utan a branch nevenek
+==> enter --> letrehozta a branchet, de nem lepett at ra a terminalban, meg mindig a masteren vagyunk, at kell lepni
+GIT CHECKOUT <barnch neve>
+--> igy a megadott branchen vagyunk
+--> ha innentol commitolunk ugyanugy git add, git commit
+--> az elso pushnal: git push -u origin <branch neve>
+--> innentol siman git push
+
+igy is lehet uj branchet letrehozni: 
+GIT CHECKOUT -b <branch neve>
+
+Githubon: compare & pull request - gomb
+--> a pull requestet jova kell hagynia valakinek
+--> ebben azok a valtozasok vannak, amiket azon a branchen csinaltal
+--> alt egy senior vagy egyeb kollega hagyja jova (kulon megegyezes alapjan)
+Pull request kuldese:
+- ra kell kattintani a pull requstes zold gombra
+- ha kiirja zolddel, pipaval, hogy able to merge, akkor az azt jelenti, hogy nincs conflict, lehet mergelni problema nelkul
+- az inputban el lehet nevezni a pull requestet (erre is lehet kulon szabaly)
+- lent van egy zold gomb: ki lehet valasztani, h draft-ot, vagy eles pull requestet akarok
+- ha meg nincs teljesen kesz, meg modositok, akkor draft, itt meg ranezhetnek, lehet kommentelni a valtoztatasokhoz
+- ha vegleg kesz, akkor kell elesre allitani: (49:36-tol a videoban)
+
+Jobb oldali sidebar-ban lehet mindenfele beallitast csinalni.
+
+Mergeles: merge pull request gomb: squash kezdetut szoktak hasznalni
+--> ez azt jelenti, hogy ha van 40 commitom, azt nem feltetlenul szeretnem a masterre pusholni
+--> ezzel adunk egy fo commitot, ami majd lenyithato, es meg lehet nezni az osszes tobbi ahhoz tartozo commitot
+--> confirm merge
+
+gomb: delete branch --> a githubos repositorybol kitorolte a branchet
+--> ettol a localban (sajat gepen ) persze meg mindig ott a feature branch
+--> hogy lacalban nalam mi van, az kb. tokmindegy, de atlathatobb, ha mindig kitorlom, ami mar kesz
+
+
+GIT SHOW BRANCH
+megmutatja, hogy localban milyen brancheink vannak, mi volt a branchek utolso commitja
+
+GIT CHECKOUT MASTER 
+igy visszalepunk a masterre, innen tudjuk majd torolni a leagazo brancheket
+
+GIT BRANCH -D <branch neve>
+
+--> ahhoz, hogy a branch torlese utan uptodate legyen a reponk localon is, kell egy git pull
+
+
+
+
+
+
+########################################################################################################################################
+Mi van, ha conflict van?
+
+(alapbol ugy szokott lenni, hogy nem lehet kozvetlenul masterre pusholni, hamem csak pull requesttel bemergelni a modositasokat)
+
+Ha githubon pull requestet akarunk kuldeni, azt irja ki pirossal:
+can't automatically merge
+Ettol meg tudunk csinalni pull requestet.
+Kiirja hogy this branch has conflicts that must be resolved
+van egy gomb: resolve conflict --> megnyitja a kodot, es helyben githubon ki lehet javitani
+--> ez akkor jo megoldas, ha a conflict csak 1-2 sor, semmi alap logikaba nem nyul bele 
+
+Elofordulhat, h sok file conflictol, akkor nem lehet githubon javitani, nem is ajanlja fel a lehetoseget.
+Olyankor mindenkeppen localban kell megcsinalni.
+
+Githubon kod javitaskor: azt is lehet h mindket verziot megtartom ( ha olyan, pl. 2 h1 tag ), vagy csak az egyiket
+Kitorlom azt, ami nem kell, es jobb felso sarokban: mark as resolved --> elmenti
+
+
+
+Conflict megoldasa localban:
+vissza kell menni a feature branchre: git checkout <branch neve>
+GIT MERGE MASTER
+mindig azt mergeljuk be, amiben allunk eppen, most a mastert mergeljuk a branchre
+--> elkezdi mergelni
+--> kiirja, hogy gond van
+--> ha meg folyamatban van a merge, de kozben rajovunk, h megsem akarunk meg mergelni, akkord:
+GIT MERGE --abort
+--> leallitja a folyamatot
+
+vscode-ban latszik is mas szinnel, h hoppa, nem stimmel valami 
+current change: a branch kodja
+incoming change: ami a masterrol jon
+accept both change: mindkettot el lehet fogadni
+compare changes: megnyitja ket kulon ablakban, es ki is emeli, a conflictes sort
+
+kijavitjuk a hibat, utana git add, git commit --> kilep a mergelesbol
+git push
+
+
+
+
+
+
+
+#######################################################################################################################################
+commit modositasa:
+GIT COMMIT --amend
+azt a commitot, amit utoljara hozzaadtunk, tudjuk modositani
+git push
+
+ha egy olyan commitot akarunk modositani, amit mar pusholtunk, akkor:
+git push -f --> force
+engedi a pusht, de ezt majdhogynem 'tilos' hasznalni, csak akkor, amikor nagyon muszaj
+
+
+
+Mi van akkor, ha csinalok egy modositast, becommitoljuk, aztan egy masik modositas, azt is commitoljuk. ===>
+De pl. a 2. commitot megsem akarom hasznalni, mert megsem akarok valtoztatni, vagy ilyesmi.
+
+a git head mindig a legutobbi commit, vagy az, ahonnan hoztuk a branchet
+
+git show HEAD --> megmutatja a head commitot
+
+git revert HEAD --> kitorli az utolso commitot
+ez csinal egy commitot, ami felulirja az eredeti commitot 
+
+
+
+ha teljes torlest akarok:
+git reset --hard HEAD^  ^--> egy committal feljebb legyen (vagy a head helyett a commit id-ja)
+
+===> ezek akkor mukodnek, ha localban vagyunk, nem pusholtuk meg fel
+
+
+ha szeretnenk torolni egy branchet mergeles nelkul:
+git push origin --delete <branch neve>
+
+
