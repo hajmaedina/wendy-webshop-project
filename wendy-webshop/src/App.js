@@ -8,6 +8,7 @@ import CheapestFirst from './CheapestFirst';
 import ContainsNike from './ContainsNike';
 import AverageStock from './AverageStock';
 import MostExpensive from './MostExpensive';
+import NewProduct from './NewProduct';
 
 function App() {
   return (
@@ -27,6 +28,9 @@ function App() {
         </Route>
         <Route path="/most-expensive">
           <MostExpensive />
+        </Route>
+        <Route path="/new-product">
+          <NewProduct />
         </Route>
         <Route exact path="/">
           <Home />
