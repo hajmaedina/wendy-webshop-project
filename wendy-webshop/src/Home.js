@@ -13,7 +13,6 @@ return (
     //TableItems
     //NewProduct
     //Delete Modal
-    //Modify
     )   
 }
 
