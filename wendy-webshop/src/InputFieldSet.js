@@ -11,12 +11,12 @@ export default function InputFieldSet({
   }) {
     return (
       <div className={`mb-3 ${errors[name] !== '' ? 'was-validated' : ''}`}>
-        <label htmlFor={name} className="form-label m-2">
+        <label htmlFor={name} className="form-label m-2 orange-light">
           {labelText}
         </label>
         <input
           type={type}
-          className="form-control m-2"
+          className="form-control m-2 orange-input"
           id={name}
           name={name}
           value={fieldValues[name]}
