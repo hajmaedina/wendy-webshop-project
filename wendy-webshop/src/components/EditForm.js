@@ -1,10 +1,10 @@
-import React, { useState, useRef, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { useState, useRef, useEffect } from 'react';
 // import InputFieldSet from './InputFieldSet';
-import db from './firebase/db';
+import db from '../firebase/db';
 
 export default function EditForm() {
-  const { id } = useParams();
+  // const { id } = useParams();
 
   const [fieldValues, setFieldValues] = useState({
     name: '',
@@ -73,7 +73,7 @@ export default function EditForm() {
 
   const errorTypes = {
     required: 'Hiányzó érték.',
-    oscars: 'Nem adható meg negatív szám.',
+    moreThanNull: 'Nem adható meg negatív szám.',
   };
 
   function isFormValid() {
@@ -141,45 +141,45 @@ export default function EditForm() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    const isValid = isFormValid();
+    // const isValid = isFormValid();
 
-    if (isValid) {
-      db.collection('ShopItems')
-        .doc(id)
-        .update({
-          name: fieldValues.name,
-          type: fieldValues.type,
-          description: fieldValues.description,
-          price: parseInt(fieldValues.price),
-          quantityOfStock: parseInt(fieldValues.quantityOfStock),
-        })
-        .then((docRef) => {
-          setFieldValues({
-            name: '',
-            type: '',
-            description: '',
-            price: '',
-            quantityOfStock: '',
-          });
-          setFormAlertText('Sikeres módosítás.');
-          setFormAlertType('success');
-        });
-    } else {
-      setFormAlertText('Sikertelen módosítás.');
-      setFormAlertType('danger');
-    }
+    // if (isValid) {
+    //   db.collection('ShopItems')
+    //     .doc(id)
+    //     .update({
+    //       name: fieldValues.name,
+    //       type: fieldValues.type,
+    //       description: fieldValues.description,
+    //       price: parseInt(fieldValues.price),
+    //       quantityOfStock: parseInt(fieldValues.quantityOfStock),
+    //     })
+    //     .then((docRef) => {
+    //       setFieldValues({
+    //         name: '',
+    //         type: '',
+    //         description: '',
+    //         price: '',
+    //         quantityOfStock: '',
+    //       });
+    //       setFormAlertText('Sikeres módosítás.');
+    //       setFormAlertType('success');
+    //     });
+    // } else {
+    //   setFormAlertText('Sikertelen módosítás.');
+    //   setFormAlertType('danger');
+    // }
   }
 
-  useEffect(() => {
-    db.collection('ShopItems')
-      .doc(id)
-      .get()
-      .then((docRef) => {
-        let data = docRef.data();
+  // useEffect(() => {
+  //   db.collection('ShopItems')
+  //     .doc(id)
+  //     .get()
+  //     .then((docRef) => {
+  //       let data = docRef.data();
 
-        setFieldValues(data);
-      });
-  }, []);
+  //       setFieldValues(data);
+  //     });
+  // }, []);
 
   return (
     <div className="container">
