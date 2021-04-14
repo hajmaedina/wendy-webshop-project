@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 // import { Modal } from 'bootstrap';
 
 function Table({ products }) {
-  console.log('products:', products)
+  console.log('products:', products);
   return (
     <>
       <header className={'container mt-4 mb-4'}></header>
@@ -34,21 +34,20 @@ function Table({ products }) {
                   />
                   <td>
                     <Link to={`/product/edit/${product.docId}`}>
-                    <button className="btn btn-primary me-3">Modify</button>
-                  </Link>
+                      <button className="btn btn-info me-3">Modify</button>
+                    </Link>
                   </td>
                   <td>
-                  <button
-                    className="btn btn-danger me-3"
-                    data-id={product.docId}
-                    data-bs-target="#myModal"
-                    data-bs-toggle="modal"
-                  // onClick={handleDeleteOnClick}
-                  >
-                    Remove
-                  </button>
+                    <button
+                      className="btn btn-orange me-3"
+                      data-id={product.docId}
+                      data-bs-target="#myModal"
+                      data-bs-toggle="modal"
+                      // onClick={handleDeleteOnClick}
+                    >
+                      Remove
+                    </button>
                   </td>
-                  
                 </tr>
               ))}
             </tbody>
