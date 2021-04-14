@@ -42,7 +42,7 @@ const shopItem = [
         quantityOfStock: 0,
         type: "Tools & Home Improvements"
     }, {
-        name: "Fuck This Shit A Motivating Swear Word ",
+        name: "Fuck This Shit A Motivating Swear Word",
         description: "Coloring Book For Adults",
         price: 160,
         quantityOfStock: 5,

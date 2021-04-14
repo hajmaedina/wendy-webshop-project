@@ -2,7 +2,7 @@
 import './App.css';
 import Table from './components/Table'
 import {
-  Router,
+  BrowserRouter as Router,
   Switch,
   Route
 } from "react-router-dom";
@@ -16,7 +16,6 @@ function App() {
         <Table/>
       </Route>
     </Switch>
-
   </Router>
   );
 }

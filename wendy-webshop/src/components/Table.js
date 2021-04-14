@@ -4,11 +4,11 @@ import TableItem from "./TableItem";
 import db from "../firebase/db"
 
 function Table() {
-  const [products, setproducts] = useState([]);
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     const unsubscribe = db
-      .collection("ShopItems")
+      .collection("shopItems")
       .onSnapshot((snapshot) => {
         const data = [];
 
@@ -18,7 +18,7 @@ function Table() {
 
           data.push(docItem);
         });
-        setproducts(data);
+        setProducts(data);
       });
     return () => {
       unsubscribe();
@@ -43,7 +43,7 @@ function Table() {
             </thead>
             <tbody>
               {products.map((product) => (
-                <TableItem key={product.name}
+                <TableItem key={product.id}
                   name={product.name}
                   type={product.type}
                   description={product.description}
