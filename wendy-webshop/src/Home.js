@@ -17,12 +17,31 @@ export default function Home() {
     'most expensive available': '/most-expensive',
   });
 
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const unsubscribe = db.collection('shopItems').onSnapshot((snapshot) => {
+      const data = [];
+
+      snapshot.docs.forEach((product) => {
+        const docItem = product.data();
+        docItem['docId'] = product.id;
+
+        data.push(docItem);
+      });
+      setProducts(data);
+    });
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
   return (
     <div className="container">
       <h1>My Shop</h1>
       <FilterBtns links={links} />
-      <Search />
-      <Table />
+      <Search products={products} setProducts={setProducts} />
+      <Table products={products} />
       <Link to="/new-product">
         <button className="btn btn-orange">New Product</button>
       </Link>

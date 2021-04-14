@@ -1,35 +1,10 @@
-import { useState, useEffect } from "react";
-//import "./App.scss";
-import TableItem from "./TableItem";
-import db from "../firebase/db"
+import TableItem from './TableItem';
 
-function Table() {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    const unsubscribe = db
-      .collection("shopItems")
-      .onSnapshot((snapshot) => {
-        const data = [];
-
-        snapshot.docs.forEach((product) => {
-          const docItem = product.data();
-          docItem["docId"] = product.id;
-
-          data.push(docItem);
-        });
-        setProducts(data);
-      });
-    return () => {
-      unsubscribe();
-    };
-  }, []);
-
+function Table({ products }) {
   return (
     <>
-      <header className={"container mt-4 mb-4"}>
-      </header>
-      <main className={"container-md"}>
+      <header className={'container mt-4 mb-4'}></header>
+      <main className={'container-md'}>
         <section>
           <table className="table table-striped ">
             <thead>
@@ -43,7 +18,8 @@ function Table() {
             </thead>
             <tbody>
               {products.map((product) => (
-                <TableItem key={product.id}
+                <TableItem
+                  key={product.id}
                   name={product.name}
                   type={product.type}
                   description={product.description}
