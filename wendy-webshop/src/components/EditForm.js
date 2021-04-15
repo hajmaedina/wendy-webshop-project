@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useState, useRef, useEffect } from 'react';
-// import InputFieldSet from './InputFieldSet';
+import { Link } from 'react-router-dom';
+import InputFieldSet from '../InputFieldSet';
 import db from '../firebase/db';
 
 export default function EditForm() {
@@ -72,8 +73,8 @@ export default function EditForm() {
   }
 
   const errorTypes = {
-    required: 'Hiányzó érték.',
-    moreThanNull: 'Nem adható meg negatív szám.',
+    required: 'Missing details.',
+    moreThanNull: 'Please, give a number bigger than 0.',
   };
 
   function isFormValid() {
@@ -161,11 +162,11 @@ export default function EditForm() {
             price: '',
             quantityOfStock: '',
           });
-          setFormAlertText('Sikeres módosítás.');
+          setFormAlertText('Well done! Changes added successfully.');
           setFormAlertType('success');
         });
     } else {
-      setFormAlertText('Sikertelen módosítás.');
+      setFormAlertText('Sorry, we cannot add your changes. Please, try again.');
       setFormAlertType('danger');
     }
   }
@@ -184,7 +185,8 @@ export default function EditForm() {
   return (
     <div className="container">
       <div className="row">
-        <h1 className="mt-3">Új termék regisztráció</h1>
+        <h1 className="text-info mt-3">Edit product details</h1>
+        <Link to='/'><button type="button" className="btn btn-orange">Back</button></Link>
         <form
           onSubmit={handleSubmit}
           noValidate={true}
@@ -194,7 +196,7 @@ export default function EditForm() {
           <InputFieldSet
             reference={references.name}
             name="name"
-            labelText="Név"
+            labelText="Name"
             type="text"
             errors={errors}
             fieldValues={fieldValues}
@@ -206,7 +208,7 @@ export default function EditForm() {
           <InputFieldSet
             reference={references.type}
             name="type"
-            labelText="Típus"
+            labelText="Type"
             type="text"
             errors={errors}
             fieldValues={fieldValues}
@@ -218,7 +220,7 @@ export default function EditForm() {
           <InputFieldSet
             reference={references.description}
             name="description"
-            labelText="Leírás"
+            labelText="Description"
             type="text"
             errors={errors}
             fieldValues={fieldValues}
@@ -230,7 +232,7 @@ export default function EditForm() {
           <InputFieldSet
             reference={references.price}
             name="price"
-            labelText="Ár"
+            labelText="Price"
             type="number"
             errors={errors}
             fieldValues={fieldValues}
@@ -242,7 +244,7 @@ export default function EditForm() {
           <InputFieldSet
             reference={references.quantityOfStock}
             name="quantityOfStock"
-            labelText="Mennyiség"
+            labelText="Quantity of stock"
             type="number"
             errors={errors}
             fieldValues={fieldValues}
@@ -251,8 +253,8 @@ export default function EditForm() {
             required={true}
           />
 
-          <button type="submit" className="btn btn-primary mt-3">
-            Mentés
+          <button type="submit" className="btn btn-orange m-2 mb-2">
+           Save
           </button>
         </form>
         {formAlertText && (
@@ -267,34 +269,3 @@ export default function EditForm() {
 
 
 
-function InputFieldSet({
-  errors,
-  fieldValues,
-  handleInputChange,
-  handleInputBlur,
-  type,
-  name,
-  labelText,
-  required,
-  reference,
-}) {
-  return (
-    <div className={`mb-3 ${errors[name] !== '' ? 'was-validated' : ''}`}>
-      <label htmlFor={name} className="form-label m-2">
-        {labelText}
-      </label>
-      <input
-        type={type}
-        className="form-control m-2"
-        id={name}
-        name={name}
-        value={fieldValues[name]}
-        onChange={handleInputChange}
-        onBlur={handleInputBlur}
-        required={required}
-        ref={reference}
-      />
-      <div className="invalid-feedback">{errors[name]}</div>
-    </div>
-  );
-}
