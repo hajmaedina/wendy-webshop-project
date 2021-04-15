@@ -18,18 +18,18 @@ export default function NavBar({ links }) {
     const navLinks = [];
 
     for (const [text, link] of Object.entries(links)) {
-        const navLink = <Link to={link} className='link-orange'>{text}</Link>
+        const navLink = <Link key={text} to={link} className='link-orange'>{text}</Link>
 
         navLinks.push(navLink);
     }
 
     return (
-        <nav class="navbar navbar-expand-lg navbar-light mb-3">
-            <button class="custom-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded={!isNavCollapsed ? true : false} aria-label="Toggle navigation" onClick={handleNavCollapse}>
-                <span class="navbar-toggler-icon"><i class="bi bi-list"></i></span>
+        <nav className="navbar navbar-expand-lg navbar-light mb-3">
+            <button className="custom-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded={!isNavCollapsed ? true : false} aria-label="Toggle navigation" onClick={handleNavCollapse}>
+                <span className="navbar-toggler-icon"><i className="bi bi-list"></i></span>
             </button>
 
-            <div class={`${isNavCollapsed ? 'collapse' : ''} navbar-collapse`} id="navbar">
+            <div className={`${isNavCollapsed ? 'collapse' : ''} navbar-collapse`} id="navbar">
                 <div className="navbar-nav d-flex justify-content-between w-100">
                     {navLinks}
                 </div>
