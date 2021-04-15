@@ -19,3 +19,27 @@
 .orange-input {
   border: 1px solid rgb(244, 67, 54);
 }
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background:rgb(244, 67, 54);
+}
+ input[type=range]::-moz-range-thumb {
+   background: rgb(244, 67, 54);
+ }
+input[type=range]::-ms-thumb {
+  background: rgb(244, 67, 54);
+ }
+ input[type=range]:focus {
+  outline: none !important;
+ }
+
+.huf::after {
+  content: " Ft"
+}
+
+.table-striped th {
+  background-color: rgb(84, 218, 228);
+  text-align: center;
+  vertical-align: inherit;
+}
