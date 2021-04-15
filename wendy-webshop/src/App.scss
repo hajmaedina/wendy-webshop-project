@@ -34,3 +34,12 @@ input[type=range]::-ms-thumb {
   outline: none !important;
  }
 
+.huf::after {
+  content: " Ft"
+}
+
+.table-striped th {
+  background-color: rgb(84, 218, 228);
+  text-align: center;
+  vertical-align: inherit;
+}
