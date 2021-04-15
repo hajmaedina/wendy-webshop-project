@@ -18,7 +18,7 @@ export default function OnlyAvailable({products}) {
       .get()
       .then( ref => {
         const data = [];
-        ref.docs.forEach( doc => {
+        ref.docs.forEach( product => {
           const docItem = product.data();
           docItem['docId'] = product.id;
 
