@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import FilterBtns from './components/FilterBtns';
+import NavBar from './components/NavBar';
 import db from './firebase/db';
 
 export default function MostExpensive() {
@@ -48,7 +48,7 @@ export default function MostExpensive() {
     <div className="container">
       <Link to="/" className="text-decoration-none"><h1 className="text-info mt-3">My Shop</h1></Link>
       <hr className="text-info" />
-      <FilterBtns links={links} />
+      <NavBar links={links} />
       <div className="m-2 mt-5">
       <h2 className="row">Most expensive available: 
       <p className="text-info col">{mostExpensiveP}</p></h2>

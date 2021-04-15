@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import db from './firebase/db';
 
-import FilterBtns from './components/FilterBtns';
+import NavBar from './components/NavBar';
 import Table from './components/Table';
 
 export default function CheapestFirst() {
@@ -36,7 +36,7 @@ export default function CheapestFirst() {
     <div className="container">
       <h1 className="text-info mt-3">My Shop</h1>
       <hr className="text-info" />
-      <FilterBtns links={links} />
+      <NavBar links={links} />
       <Table products={products} />
     </div>
   );
