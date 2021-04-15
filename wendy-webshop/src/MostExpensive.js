@@ -16,24 +16,28 @@ export default function MostExpensive() {
   const [products, setProducts] = useState([]);
   const [mostExpensiveP, setMostExpensiveP] = useState();
 
-  // useEffect(() => {
-  //   const unsubscribe = db.collection('shopItems').onSnapshot((snapshot) => {
-  //     const data = [];
+  useEffect(() => {
+    const unsubscribe = db.collection('shopItems').onSnapshot((snapshot) => {
+      const data = [];
 
-  //     snapshot.docs.forEach((product) => {
-  //       const docItem = product.data();
-  //       docItem['docId'] = product.id;
-
-  //       data.push(docItem);
-  //     });
-  //     setProducts(data);
-  //   });
-  //   mostExpensive()
-  //   return () => {
-  //     unsubscribe();
-  //   };
+      snapshot.docs.forEach((product) => {
+        const docItem = product.data();
+        docItem['docId'] = product.id;
+        
+        data.push(docItem);
+      });
+      setProducts(data);
+    });
     
-  // }, [products]);
+    return () => {
+      unsubscribe();
+    };
+    
+  }, []);
+
+  useEffect(() => {
+mostExpensive()
+  },[products]);
 
   function mostExpensive() {
     const mostExpensiveProduct = Math.max(...products.map(product => product.price));
@@ -43,7 +47,7 @@ export default function MostExpensive() {
       }
     })
   }
-  
+ 
   return(
     <div className="container">
       <Link to="/" className="text-decoration-none"><h1 className="text-info mt-3">My Shop</h1></Link>
