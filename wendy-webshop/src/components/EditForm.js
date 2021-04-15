@@ -242,17 +242,27 @@ export default function EditForm() {
             required={true}
           />
 
-          <InputFieldSet
-            reference={references.quantityOfStock}
-            name="quantityOfStock"
-            labelText="Quantity of stock"
-            type="number"
-            errors={errors}
-            fieldValues={fieldValues}
-            handleInputBlur={handleInputBlur}
-            handleInputChange={handleInputChange}
-            required={true}
-          />
+          <div className="row">
+            <div className="col">
+              <label htmlFor="quantityOfStock" className="form-label m-2 orange-light">Quantity Of Stock</label>
+              <input
+                type="range"
+                className="form-range m-2 mb-3"
+                id="quantityOfStock"
+                min="0"
+                max="100"
+                name="quantityOfStock"
+                fieldValues={fieldValues}
+                value={parseInt(fieldValues.quantityOfStock)}
+                onChange={handleInputChange}
+                ref={references.quantityOfStock}
+              />
+            </div>
+            <div className="col-1 btn-orange mt-4 text-center">
+              <p className="mt-3">{parseInt(fieldValues.quantityOfStock)}</p>
+            </div>
+          </div>
+
           <Link to='/'><button type="submit" className="btn btn-orange m-2 mb-2">
             Save
           </button></Link>
