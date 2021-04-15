@@ -1,5 +1,9 @@
 @import '~bootstrap/scss/bootstrap.scss';
 
+body {
+  box-sizing: border-box;
+}
+
 .btn-orange {
   background-color: rgb(244, 67, 54);
   color: rgb(255, 255, 255);
@@ -56,11 +60,23 @@ input[type=range]::-ms-thumb {
  }
 
 .huf::after {
-  content: " Ft"
+  content: " Ft";
+  text-align: center;
 }
 
-.table-striped th {
-  background-color: rgb(84, 218, 228);
+
+
+table th {
+  background-color: #0fcaf0;
   text-align: center;
   vertical-align: inherit;
+  border: 3px solid white;
 }
+
+table tr td{
+  padding: 10px;
+  vertical-align: inherit;
+  font-weight: 400;
+}
+
+

@@ -32,7 +32,7 @@ function Table({ products }) {
       <header className={'container mt-4 mb-4'}></header>
       <main className={'container-md'}>
         <section>
-          <table className="table table-striped ">
+          <table>
             <thead>
               <tr>
                 <th>Name</th>
