@@ -186,7 +186,8 @@ export default function EditForm() {
     <div className="container">
       <div className="row">
         <h1 className="text-info mt-3">Edit product details</h1>
-        <Link to='/'><button type="button" className="btn btn-orange">Back</button></Link>
+        <hr className="text-info" />
+        {/* <Link to='/'><button type="button" className="btn btn-orange">Back</button></Link> */}
         <form
           onSubmit={handleSubmit}
           noValidate={true}
@@ -252,10 +253,10 @@ export default function EditForm() {
             handleInputChange={handleInputChange}
             required={true}
           />
+          <Link to='/'><button type="submit" className="btn btn-orange m-2 mb-2">
+            Save
+          </button></Link>
 
-          <button type="submit" className="btn btn-orange m-2 mb-2">
-           Save
-          </button>
         </form>
         {formAlertText && (
           <div className={`alert mt-3 alert-${formAlertType}`} role="alert">
