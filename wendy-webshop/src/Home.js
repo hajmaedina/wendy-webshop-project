@@ -38,7 +38,8 @@ export default function Home() {
 
   return (
     <div className="container">
-      <h1>My Shop</h1>
+      <h1 className="text-info mt-3">My Shop</h1>
+      <hr className="text-info" />
       <FilterBtns links={links} />
       <Search products={products} setProducts={setProducts} />
       <Table products={products} />

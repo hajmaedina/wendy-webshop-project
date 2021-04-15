@@ -9,11 +9,15 @@ import ContainsNike from './ContainsNike';
 import AverageStock from './AverageStock';
 import MostExpensive from './MostExpensive';
 import NewProduct from './NewProduct';
+import EditForm from './components/EditForm';
 
 function App() {
   return (
     <Router>
       <Switch>
+        <Route path="/product/edit/:id">
+          <EditForm />
+        </Route>
         <Route path="/only-available">
           <OnlyAvailable />
         </Route>
