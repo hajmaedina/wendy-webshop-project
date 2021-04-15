@@ -158,7 +158,8 @@ export default function NewProduct() {
 console.log(fieldValue.quantity);
     return (
         <div className="container">
-            <h1>Add new item</h1>
+            <h1 className="text-info mt-3">Add new item</h1>
+            <hr className="text-info" />
             <Link to='/'><button type="button" className="btn btn-orange">Back</button></Link>
             <form className={`needs-validation ${formWasValidated ? 'was-validated' : ''}`} noValidate={true} onSubmit={handleSubmit} >
                 <InputFieldSet

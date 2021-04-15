@@ -22,15 +22,15 @@ export default function DeleteItem({handleDeleteConfirm, deleteModalRef}) {
               className='btn btn-secondary'
               data-bs-dismiss='modal'
             >
-              Mégse
+              NO
             </button>
             <button
               type='button'
-              className='btn btn-danger'
+              className='btn btn-orange'
               data-bs-dismiss='modal'
               onClick={handleDeleteConfirm}
             >
-              Igen
+              YES
             </button>
           </div>
         </div>
