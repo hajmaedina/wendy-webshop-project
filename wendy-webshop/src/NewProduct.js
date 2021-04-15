@@ -88,7 +88,7 @@ export default function NewProduct() {
             db.collection('shopItems').add({
                 name:fieldValue.name,
                 description: fieldValue.description,
-                price: fieldValue.price,
+                price: parseInt(fieldValue.price),
                 quantityOfStock: parseInt(fieldValue.quantity),
                 type:fieldValue.type,
                
@@ -155,7 +155,7 @@ export default function NewProduct() {
         
     
 
-console.log(fieldValue.quantity);
+
     return (
         <div className="container">
             <h1 className="text-info mt-3">Add new item</h1>
