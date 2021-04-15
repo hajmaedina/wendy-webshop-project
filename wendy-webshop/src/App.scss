@@ -12,6 +12,27 @@
   font-weight: bold;
 }
 
+.link-orange {
+  background-color: rgb(244, 67, 54);
+  color: rgb(255, 255, 255);
+  text-transform: uppercase;
+  font-weight: bold;
+  border-radius: 5px;
+  display: block;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+
+    &:hover {
+      color:rgb(33, 37, 41);
+    }
+}
+
+.navbar-light .navbar-toggler {
+  color: rgb(244, 67, 54);
+  border-color: rgb(255, 125, 103);
+}
+
 .orange-light {
   color: rgb(255, 125, 103);
 }

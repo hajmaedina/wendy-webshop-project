@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import db from './firebase/db';
 
-import FilterBtns from './components/FilterBtns';
+import NavBar from './components/NavBar';
 import Search from './components/Search';
 import Table from './components/Table';
 
@@ -40,7 +40,7 @@ export default function Home() {
     <div className="container">
       <h1 className="text-info mt-3">My Shop</h1>
       <hr className="text-info" />
-      <FilterBtns links={links} />
+      <NavBar links={links} />
       <Search products={products} setProducts={setProducts} />
       <Link to="/new-product">
         <button className="btn btn-orange mt-4 w-100">Add New Product</button>
