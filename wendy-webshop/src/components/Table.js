@@ -1,8 +1,31 @@
 import TableItem from './TableItem';
+import {useState, useRef} from 'react';
 import { Link } from 'react-router-dom';
-// import { Modal } from 'bootstrap';
+import { Modal } from 'bootstrap';
+import DeleteItem from './DeleteItem';
+
+import db from '../firebase/db';
 
 function Table({ products }) {
+
+  const [itemToBeDeleted, setItemToBeDeleted] = useState(null);
+  	
+  const deleteModalRef = useRef();
+
+  function handleDeleteConfirm() {
+      db.collection('shopItems').doc(itemToBeDeleted).delete();
+  
+      const myModal = new Modal(deleteModalRef.current);
+      myModal.show();
+      myModal.hide();
+    }
+  
+    function handleDeleteOnClick(ev) {
+      let toBeDeleted = ev.target.dataset.id;
+  
+      setItemToBeDeleted(toBeDeleted);
+    }
+
   console.log('products:', products);
   return (
     <>
@@ -43,7 +66,7 @@ function Table({ products }) {
                       data-id={product.docId}
                       data-bs-target="#myModal"
                       data-bs-toggle="modal"
-                      // onClick={handleDeleteOnClick}
+                      onClick={handleDeleteOnClick}
                     >
                       Remove
                     </button>
@@ -52,6 +75,10 @@ function Table({ products }) {
               ))}
             </tbody>
           </table>
+          <DeleteItem
+              handleDeleteConfirm={handleDeleteConfirm}
+              deleteModalRef={deleteModalRef}
+          />
         </section>
       </main>
     </>
