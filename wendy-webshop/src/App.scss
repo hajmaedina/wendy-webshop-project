@@ -19,3 +19,18 @@
 .orange-input {
   border: 1px solid rgb(244, 67, 54);
 }
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background:rgb(244, 67, 54);
+}
+ input[type=range]::-moz-range-thumb {
+   background: rgb(244, 67, 54);
+ }
+input[type=range]::-ms-thumb {
+  background: rgb(244, 67, 54);
+ }
+ input[type=range]:focus {
+  outline: none !important;
+ }
+

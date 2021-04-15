@@ -4,7 +4,7 @@ export default function DeleteItem({handleDeleteConfirm, deleteModalRef}) {
       <div className='modal-dialog'>
         <div className='modal-content'>
           <div className='modal-header'>
-            <h5 className='modal-title'>TÖRLÉS</h5>
+            <h5 className='modal-title'>REMOVE</h5>
             <button
               type='button'
               className='btn-close'
@@ -13,8 +13,8 @@ export default function DeleteItem({handleDeleteConfirm, deleteModalRef}) {
             ></button>
           </div>
           <div className='modal-body'>
-            <p>Biztosan törölni szeretné a kiválasztott terméket?</p>
-            <p>Vigyázat: A változásokat nem lehet visszavonni!</p>
+            <p>Are you sure to remove the product from the list?</p>
+            <p>Warning: Changes can not be undone!</p>
           </div>
           <div className='modal-footer'>
             <button
@@ -22,15 +22,15 @@ export default function DeleteItem({handleDeleteConfirm, deleteModalRef}) {
               className='btn btn-secondary'
               data-bs-dismiss='modal'
             >
-              Mégse
+              NO
             </button>
             <button
               type='button'
-              className='btn btn-danger'
+              className='btn btn-orange'
               data-bs-dismiss='modal'
               onClick={handleDeleteConfirm}
             >
-              Igen
+              YES
             </button>
           </div>
         </div>
