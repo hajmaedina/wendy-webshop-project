@@ -1,19 +1,8 @@
-import { mapToStyles } from '@popperjs/core/lib/modifiers/computeStyles';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import NavBar from './components/NavBar';
+
 import db from './firebase/db';
 
 export default function MostExpensive() {
-  const [links, setLinks] = useState({
-    'only available': '/only-available',
-    'cheapest first': '/cheapest-first',
-    'contains nike': '/contains-nike',
-    'average stock': '/average-stock',
-    'most expensive available': '/most-expensive',
-  });
-
-
   const [products, setProducts] = useState([]);
   const [mostExpensiveP, setMostExpensiveP] = useState();
 
@@ -24,43 +13,41 @@ export default function MostExpensive() {
       snapshot.docs.forEach((product) => {
         const docItem = product.data();
         docItem['docId'] = product.id;
-        
+
         data.push(docItem);
       });
       setProducts(data);
     });
-    
+
     return () => {
       unsubscribe();
     };
-    
   }, []);
 
   useEffect(() => {
-mostExpensive()
-  },[products]);
+    mostExpensive();
+  }, [products]);
 
   function mostExpensive() {
     const mostExpensiveProduct = [];
-    products.map(product => {
-       mostExpensiveProduct.push(product.price);
-      
-      if(product.price === Math.max(...mostExpensiveProduct) && product.quantityOfStock > 0){
+    products.map((product) => {
+      mostExpensiveProduct.push(product.price);
+
+      if (
+        product.price === Math.max(...mostExpensiveProduct) &&
+        product.quantityOfStock > 0
+      ) {
         setMostExpensiveP(product.name);
       }
-    })
-    
+    });
   }
- 
-  return(
-    <div className="container">
-      <Link to="/" className="text-decoration-none"><h1 className="text-info mt-3">My Shop</h1></Link>
-      <hr className="text-info" />
-      <NavBar links={links} />
-      <div className="m-2 mt-5">
-      <h2 className="row">Most expensive available: 
-      <p className="text-info col">{mostExpensiveP}</p></h2>
-      </div>
-      </div>
-    );
+
+  return (
+    <div className="m-2 mt-5">
+      <h2 className="row">
+        Most expensive available:
+        <p className="text-info col">{mostExpensiveP}</p>
+      </h2>
+    </div>
+  );
 }

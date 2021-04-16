@@ -12,7 +12,7 @@ export default function OnlyAvailable({ products }) {
 
   useEffect(() => {
     db.collection('shopItems')
-      .where('quantityOfStock', '==', 0)
+      .where('quantityOfStock', '>', 0)
       .get()
       .then((ref) => {
         const data = [];

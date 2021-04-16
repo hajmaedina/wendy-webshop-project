@@ -37,15 +37,12 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="container">
-      <h1 className="text-info mt-3">My Shop</h1>
-      <hr className="text-info" />
-      <NavBar links={links} />
+    <>
       <Search products={products} setProducts={setProducts} />
       <Link to="/new-product">
         <button className="btn btn-orange mt-4 w-100">Add New Product</button>
       </Link>
       <Table products={products} />
-    </div>
+    </>
   );
 }
