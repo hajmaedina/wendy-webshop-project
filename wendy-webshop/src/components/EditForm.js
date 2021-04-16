@@ -50,10 +50,10 @@ export default function EditForm() {
       required: isNotEmpty,
       moreThanNull: moreThanNull,
     },
-    quantityOfStock: {
-      required: isNotEmpty,
-      moreThanNull: moreThanNull,
-    },
+    // quantityOfStock: {
+    //   required: isNotEmpty,
+    //   moreThanNull: moreThanNull,
+    // },
   };
 
   function isNotEmpty(value) {
@@ -160,7 +160,7 @@ export default function EditForm() {
             type: '',
             description: '',
             price: '',
-            quantityOfStock: '',
+            quantityOfStock: 0,
           });
           setFormAlertText('Well done! Changes added successfully.');
           setFormAlertType('success');
@@ -263,9 +263,8 @@ export default function EditForm() {
             </div>
           </div>
 
-          <Link to='/'><button type="submit" className="btn btn-orange m-2 mb-2">
-            Save
-          </button></Link>
+          <button type="submit" className="btn btn-orange m-2 mb-2">Save</button>
+          <Link to='/'><button type="button" className="btn btn-orange m-2 mb-2">Back</button></Link>
 
         </form>
         {formAlertText && (
