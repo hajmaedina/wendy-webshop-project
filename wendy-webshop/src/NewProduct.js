@@ -3,6 +3,7 @@ import InputFieldSet from './InputFieldSet'
 import  db  from './firebase/db';
 import { Link } from 'react-router-dom';
 
+
 export default function NewProduct() {
     const [formWasValidated, setFormWasValidated] = useState(false);
     const [formAlertText, setFormAlertText] = useState('');
@@ -158,9 +159,8 @@ export default function NewProduct() {
 
     return (
         <div className="container">
-            <h1 className="text-info mt-3">Add new item</h1>
+            <h3 className="text-info mt-3">Add new item</h3>
             <hr className="text-info" />
-            <Link to='/'><button type="button" className="btn btn-orange">Back</button></Link>
             <form className={`needs-validation ${formWasValidated ? 'was-validated' : ''}`} noValidate={true} onSubmit={handleSubmit} >
                 <InputFieldSet
                 type="text"
