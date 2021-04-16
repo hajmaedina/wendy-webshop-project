@@ -2,12 +2,7 @@ import { useEffect, useState } from 'react';
 import Table from './components/Table';
 import db from './firebase/db';
 
-export default function OnlyAvailable({ products }) {
-  //Ha nem kell db lekeres, hanem hasznalhoto a products:
-  //const availableProducts = products.filter( product => product.quantityOfStock === 0 );
-
-  //Ha kell db lekeres:
-
+export default function OnlyAvailable() {
   const [availableProducts, setAvailableProducts] = useState([]);
 
   useEffect(() => {

@@ -50,10 +50,6 @@ export default function EditForm() {
       required: isNotEmpty,
       moreThanNull: moreThanNull,
     },
-    // quantityOfStock: {
-    //   required: isNotEmpty,
-    //   moreThanNull: moreThanNull,
-    // },
   };
 
   function isNotEmpty(value) {
@@ -95,7 +91,6 @@ export default function EditForm() {
       ...previousErrors,
       [fieldName]: '',
     }));
-    //references[fieldName].current.setCustomValidity('');
 
     if (validators[fieldName] !== undefined) {
       for (const [validationType, validatorFn] of Object.entries(
@@ -186,7 +181,7 @@ export default function EditForm() {
       <div className="row">
         <h3 className="text-info mt-3">Edit product details</h3>
         <hr className="text-info" />
-        {/* <Link to='/'><button type="button" className="btn btn-orange">Back</button></Link> */}
+
         <form
           onSubmit={handleSubmit}
           noValidate={true}
