@@ -2,7 +2,7 @@ import SearchInput from './SearchInput';
 import { useState } from 'react';
 import db from '../firebase/db';
 
-export default function Search({ setProducts }) {
+export default function Search({products, setProducts }) {
 
     const [searchText, setSearchText] = useState('');
     const [showAlert, setShowAlert] = useState(false);
@@ -11,31 +11,66 @@ export default function Search({ setProducts }) {
         setSearchText(e.target.value);
     }
 
-    function handleSearchOnClick() {
-        if (searchText.trim('').length > 0) {
-            db.collection('shopItems')
-                .where('name', '>=', searchText)
-                .where('name', '<=', searchText + '\uf8ff')
-                .get()
-                .then(ref => {
-                    const data = [];
+    // function handleSearchOnClick() {
+    //     if (searchText.trim('').length > 0) {
+    //         db.collection('shopItems')
+    //             .where('name', '>=', searchText)
+    //             .where('name', '<=', searchText + '\uf8ff')
+    //             .get()
+    //             .then(ref => {
+    //                 const data = [];
 
-                    ref.docs.forEach((product) => {
-                        const docItem = product.data();
-                        docItem['docId'] = product.id;
+    //                 ref.docs.forEach((product) => {
+    //                     const docItem = product.data();
+    //                     docItem['docId'] = product.id;
 
-                        data.push(docItem);
-                    });
-                    if (data.length > 0) {
-                        setProducts(data);
-                        setShowAlert(false);
-                    } else {
-                        setShowAlert(true);
-                    }
-                })
-                .catch( error => {
-                    console.error( error.message )
+    //                     data.push(docItem);
+    //                 });
+    //                 if (data.length > 0) {
+    //                     setProducts(data);
+    //                     setShowAlert(false);
+    //                 } else {
+    //                     setShowAlert(true);
+    //                 }
+    //             })
+    //             .catch( error => {
+    //                 console.error( error.message )
+    //             });
+    //     }
+    // }
+
+    async function handleSearchOnClick() {
+        setShowAlert( false );
+        await db.collection('shopItems')
+            .get()
+            .then(ref => {
+                const data = [];
+
+                ref.docs.forEach((product) => {
+                    const docItem = product.data();
+                    docItem['docId'] = product.id;
+
+                    data.push(docItem);
                 });
+
+                setProducts( data );
+            })
+            .catch( error => {
+                console.error( error.message )
+            });
+
+        const text = searchText.toLowerCase();
+
+        const result = products.filter( product => 
+            product.name.toLowerCase().includes(text) ||
+            product.description.toLowerCase().includes(text)
+        );
+
+        if ( result.length > 0 ) {
+            setProducts( result );
+            setShowAlert(false);
+        } else {
+            setShowAlert(true);
         }
     }
 
