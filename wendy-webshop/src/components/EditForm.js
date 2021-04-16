@@ -267,7 +267,11 @@ export default function EditForm() {
               <p className="mt-3">{parseInt(fieldValues.quantityOfStock)}</p>
             </div>
           </div>
-
+          {formAlertText && (
+            <div className={`alert mt-3 alert-${formAlertType}`} role="alert">
+              {formAlertText}
+            </div>
+          )}
           <button type="submit" className="btn btn-orange m-2 mb-2">
             Save
           </button>
@@ -277,11 +281,6 @@ export default function EditForm() {
             </button>
           </Link>
         </form>
-        {formAlertText && (
-          <div className={`alert mt-3 alert-${formAlertType}`} role="alert">
-            {formAlertText}
-          </div>
-        )}
       </div>
     </div>
   );
