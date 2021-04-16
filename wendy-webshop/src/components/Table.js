@@ -21,12 +21,10 @@ function Table({ products }) {
     }
   
     function handleDeleteOnClick(ev) {
-      let toBeDeleted = ev.target.dataset.id;
-  
+      let toBeDeleted = ev.target.dataset.id; 
       setItemToBeDeleted(toBeDeleted);
     }
 
-  console.log('products:', products);
   return (
     <>
       <header className={'container mt-4 mb-4'}></header>
