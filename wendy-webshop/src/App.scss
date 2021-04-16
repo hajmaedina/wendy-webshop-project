@@ -4,6 +4,10 @@ body {
   box-sizing: border-box;
 }
 
+.container {
+  max-width: 1000px;
+}
+
 .btn-orange {
   background-color: rgb(244, 67, 54);
   color: rgb(255, 255, 255);
@@ -25,11 +29,12 @@ body {
   display: block;
   padding: 0.5rem 1rem;
   text-decoration: none;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out;
 
-    &:hover {
-      color:rgb(33, 37, 41);
-    }
+  &:hover {
+    color: rgb(33, 37, 41);
+  }
 }
 
 .navbar-light .navbar-toggler {
@@ -45,26 +50,24 @@ body {
   border: 1px solid rgb(244, 67, 54);
 }
 
-input[type=range]::-webkit-slider-thumb {
+input[type='range']::-webkit-slider-thumb {
   -webkit-appearance: none;
-  background:rgb(244, 67, 54);
-}
- input[type=range]::-moz-range-thumb {
-   background: rgb(244, 67, 54);
- }
-input[type=range]::-ms-thumb {
   background: rgb(244, 67, 54);
- }
- input[type=range]:focus {
+}
+input[type='range']::-moz-range-thumb {
+  background: rgb(244, 67, 54);
+}
+input[type='range']::-ms-thumb {
+  background: rgb(244, 67, 54);
+}
+input[type='range']:focus {
   outline: none !important;
- }
+}
 
 .huf::after {
-  content: " Ft";
+  content: ' Ft';
   text-align: center;
 }
-
-
 
 table th {
   background-color: #0fcaf0;
@@ -73,10 +76,8 @@ table th {
   border: 3px solid white;
 }
 
-table tr td{
+table tr td {
   padding: 10px;
   vertical-align: inherit;
   font-weight: 400;
 }
-
-
