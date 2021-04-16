@@ -1,3 +1,4 @@
+import { mapToStyles } from '@popperjs/core/lib/modifiers/computeStyles';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import NavBar from './components/NavBar';
@@ -40,12 +41,15 @@ mostExpensive()
   },[products]);
 
   function mostExpensive() {
-    const mostExpensiveProduct = Math.max(...products.map(product => product.price));
+    const mostExpensiveProduct = [];
     products.map(product => {
-      if(product.price === mostExpensiveProduct && product.quantityOfStock > 0){
+       mostExpensiveProduct.push(product.price);
+      
+      if(product.price === Math.max(...mostExpensiveProduct) && product.quantityOfStock > 0){
         setMostExpensiveP(product.name);
       }
     })
+    
   }
  
   return(
