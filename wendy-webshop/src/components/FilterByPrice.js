@@ -11,16 +11,8 @@ export default function FilterByPrice({products, setProducts}) {
     }
 
     function handleFilterByPrice(e) {
-      let filterFrom = null;
-      if ( e.target.dataset.name === 'exactly' ) {
-        filterFrom = '=='
-      } else if ( e.target.dataset.name === 'above' ) {
-        filterFrom = '>'
-      } else {
-        filterFrom = '<'
-      }
+      const filterFrom = e.target.dataset.filter;
       
-
       console.log ( filterFrom + price );
 
       //db call:
@@ -36,21 +28,21 @@ export default function FilterByPrice({products, setProducts}) {
       <div className="w-100 d-flex align-items-end">
         <button
           className="btn btn-orange h-50 w-25 me-3"
-          data-name='above'
+          data-filter='>'
           onClick={handleFilterByPrice}
         >
           Above
         </button>
         <button
           className="btn btn-orange h-50 w-25 me-3"
-          data-name='below'
+          data-filter='<'
           onClick={handleFilterByPrice}
         >
           Below
         </button>
         <button
           className="btn btn-orange h-50 w-25 me-3"
-          data-name='exactly'
+          data-filter='=='
           onClick={handleFilterByPrice}
         >
           Exactly
