@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import db from './firebase/db';
 
@@ -20,6 +21,8 @@ import AverageStock from './AverageStock';
 import MostExpensive from './MostExpensive';
 import EditForm from './components/EditForm';
 import NewProduct from './NewProduct';
+import MoreFilters from './components/MoreFilters';
+import FilterByType from './components/FilterByType';
 
 function App() {
   const [links, setLinks] = useState({
@@ -30,7 +33,10 @@ function App() {
     'most expensive available': '/most-expensive',
   });
 
+  const [typeLinks, setTypeLinks] = useState([]);
+
   const [products, setProducts] = useState([]);
+  const [moreVisible, setMoreVisibility] = useState(false);
 
   useEffect(() => {
     const unsubscribe = db.collection('shopItems').onSnapshot((snapshot) => {
@@ -43,22 +49,39 @@ function App() {
         data.push(docItem);
       });
       setProducts(data);
+      getTypeLinks(data);
     });
     return () => {
       unsubscribe();
     };
   }, []);
 
+  function getTypeLinks(data) {
+    data.forEach((item) => {
+      if (!typeLinks.includes(item.type)) {
+        typeLinks[item.type] = `/filter-by-type/${item.type}`;
+      }
+    });
+  }
+
+  function setMoreStatus() {
+    setMoreVisibility(true);
+  }
+
+  function setShopStatus() {
+    setMoreVisibility(false);
+  }
+
   return (
     <Router>
       <div className="container">
         <header className="d-flex justify-content-between mt-3">
           <NavLink to="/" style={{ textDecoration: 'none' }}>
-            <h1 className="link-info">My Shop</h1>
-          </NavLink>
+            <h1 className="link-info" onClick={setShopStatus}>My Shop</h1></NavLink>
+          <Link to="/more-filters" style={{ textDecoration: 'none' }}><h1 className="link-info" onClick={setMoreStatus}>More >></h1></Link>
         </header>
         <hr className="text-info" />
-        <NavBar links={links} />
+        {moreVisible ? <NavBar links={typeLinks} /> : <NavBar links={links} />}
         <Switch>
           <Route path="/new-product">
             <NewProduct />
@@ -80,6 +103,12 @@ function App() {
           </Route>
           <Route path="/most-expensive">
             <MostExpensive />
+          </Route>
+          <Route path="/filter-by-type/:type">
+            <FilterByType products={products}/>
+          </Route>
+          <Route path="/more-filters">
+            <MoreFilters products={products} setProducts={setProducts} />
           </Route>
           <Route exact path="/">
             <Home products={products} setProducts={setProducts} />
