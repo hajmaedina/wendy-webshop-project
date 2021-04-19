@@ -31,6 +31,8 @@ function App() {
     'contains nike': '/contains-nike',
     'average stock': '/average-stock',
     'most expensive available': '/most-expensive',
+    'euro': '/price-in-eur',
+    'original currency': './price-in-original',
   });
 
   const [typeLinks, setTypeLinks] = useState([]);
@@ -76,7 +78,7 @@ function App() {
     <Router>
       <div className="container">
         <header className="d-flex justify-content-between mt-3">
-          <NavLink to="/" style={{ textDecoration: 'none' }}>
+          <NavLink to="/webshop" style={{ textDecoration: 'none' }}>
             <h1 className="link-info" onClick={setShopStatus}>My Shop</h1></NavLink>
           <Link to="/more-filters" style={{ textDecoration: 'none' }}><h1 className="link-info" onClick={setMoreStatus}>More >></h1></Link>
         </header>
@@ -104,13 +106,19 @@ function App() {
           <Route path="/most-expensive">
             <MostExpensive />
           </Route>
+          <Route path="/price-in-original">
+            <Home products={products} setProducts={setProducts} currency={'forint'}/>
+          </Route>
+          <Route path="/price-in-eur">
+            <Home products={products} setProducts={setProducts} currency={'euro'}/>
+          </Route>
           <Route path="/filter-by-type/:type">
             <FilterByType products={products}/>
           </Route>
           <Route path="/more-filters">
             <MoreFilters products={products} setProducts={setProducts} />
           </Route>
-          <Route exact path="/">
+          <Route path="/webshop">
             <Home products={products} setProducts={setProducts} />
           </Route>
         </Switch>

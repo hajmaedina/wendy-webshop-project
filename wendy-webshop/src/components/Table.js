@@ -6,7 +6,7 @@ import DeleteItem from './DeleteItem';
 
 import db from '../firebase/db';
 
-function Table({ products }) {
+function Table({ products, currency }) {
   const [itemToBeDeleted, setItemToBeDeleted] = useState(null);
 
   const deleteModalRef = useRef();
@@ -22,6 +22,14 @@ function Table({ products }) {
   function handleDeleteOnClick(ev) {
     let toBeDeleted = ev.target.dataset.id;
     setItemToBeDeleted(toBeDeleted);
+  }
+
+  function countPrice(price) {
+    if (currency === 'euro') {
+      return `${Math.round(price/365)} €`;
+    }
+    return `${price} Ft`;
+    
   }
 
   return (
@@ -48,7 +56,8 @@ function Table({ products }) {
                     name={product.name}
                     type={product.type}
                     description={product.description}
-                    price={product.price}
+                    price={countPrice(product.price)} 
+                    // price={product.price} 
                     quantityOfStock={product.quantityOfStock}
                   />
                   <td>

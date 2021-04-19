@@ -29,6 +29,8 @@ body {
   display: block;
   padding: 0.5rem 1rem;
   text-decoration: none;
+  text-align: center;
+  margin: 0 5px;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out;
 
@@ -65,7 +67,6 @@ input[type='range']:focus {
 }
 
 .huf::after {
-  content: ' Ft';
   text-align: center;
 }
 
