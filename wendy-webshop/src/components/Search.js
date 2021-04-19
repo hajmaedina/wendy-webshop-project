@@ -2,7 +2,7 @@ import SearchInput from './SearchInput';
 import { useState } from 'react';
 import db from '../firebase/db';
 
-export default function Search({ products, setProducts }) {
+export default function Search({ setProducts }) {
   const [searchText, setSearchText] = useState('');
   const [showAlert, setShowAlert] = useState(false);
 
@@ -25,12 +25,14 @@ export default function Search({ products, setProducts }) {
           data.push(docItem);
         });
 
-        setProducts(data);
+        searchPlus(data);
       })
       .catch((error) => {
         console.error(error.message);
       });
+  }
 
+  function searchPlus(products) {
     const text = searchText.toLowerCase();
 
     const result = products.filter(
@@ -43,6 +45,7 @@ export default function Search({ products, setProducts }) {
       setProducts(result);
       setShowAlert(false);
     } else {
+      setProducts(result);
       setShowAlert(true);
     }
   }

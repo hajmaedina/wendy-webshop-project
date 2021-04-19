@@ -7,7 +7,9 @@ import {
   NavLink,
 } from 'react-router-dom';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
+import db from './firebase/db';
 
 import Home from './Home.js';
 import NavBar from './components/NavBar';
@@ -27,6 +29,25 @@ function App() {
     'average stock': '/average-stock',
     'most expensive available': '/most-expensive',
   });
+
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const unsubscribe = db.collection('shopItems').onSnapshot((snapshot) => {
+      const data = [];
+
+      snapshot.docs.forEach((product) => {
+        const docItem = product.data();
+        docItem['docId'] = product.id;
+
+        data.push(docItem);
+      });
+      setProducts(data);
+    });
+    return () => {
+      unsubscribe();
+    };
+  }, []);
 
   return (
     <Router>
@@ -61,7 +82,7 @@ function App() {
             <MostExpensive />
           </Route>
           <Route exact path="/">
-            <Home />
+            <Home products={products} setProducts={setProducts} />
           </Route>
         </Switch>
       </div>
