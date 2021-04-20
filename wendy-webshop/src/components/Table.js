@@ -57,7 +57,6 @@ function Table({ products, currency }) {
                     type={product.type}
                     description={product.description}
                     price={countPrice(product.price)} 
-                    // price={product.price} 
                     quantityOfStock={product.quantityOfStock}
                   />
                   <td>

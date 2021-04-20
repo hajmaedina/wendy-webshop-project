@@ -80,7 +80,7 @@ function App() {
         <header className="d-flex justify-content-between mt-3">
           <NavLink to="/webshop" style={{ textDecoration: 'none' }}>
             <h1 className="link-info" onClick={setShopStatus}>My Shop</h1></NavLink>
-          <Link to="/more-filters" style={{ textDecoration: 'none' }}><h1 className="link-info" onClick={setMoreStatus}>More >></h1></Link>
+          <Link to="/more-filters" style={{ textDecoration: 'none' }}><h1 className="link-info" onClick={setMoreStatus}>More ➔</h1></Link>
         </header>
         <hr className="text-info" />
         {moreVisible ? <NavBar links={typeLinks} /> : <NavBar links={links} />}
