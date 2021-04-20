@@ -121,6 +121,9 @@ function App() {
           <Route path="/webshop">
             <Home products={products} setProducts={setProducts} />
           </Route>
+          <Route exact path="/">
+            <Home products={products} setProducts={setProducts} />
+          </Route>
         </Switch>
       </div>
     </Router>
